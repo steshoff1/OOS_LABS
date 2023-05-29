@@ -1,0 +1,80 @@
+ldd /bin/ls | grep selinux
+ls -l /etc/selinux/
+ls -l /etc/selinux/targeted/
+id -Z
+ls -Z /etc/passwd /etc/group /etc/shadow
+ls -Z /etc/login.defs /etc/sudoers
+ls -Z /usr/bin/passwd 
+ls -Z /usr/sbin/useradd 
+getfattr -n security.selinux /etc/passwd
+ps Zaux
+ls /proc/$$/attr
+ps Z $(pgrep passwd)
+netstat -tnlpZ
+sestatus 
+getenforce 
+vi /etc/selinux/config
+reboot
+sestatus 
+getenforce 
+vi /etc/selinux/config
+reboot
+sestatus
+getenforce 
+vi /etc/selinux/config
+reboot
+sestatus 
+setenforce 1
+echo 1 > /sys/fs/selinux/enforce
+uname -a
+cat /usr/src/kernels/4.18.0-425.3.1.el8.x86_64/.config  | grep SELINUX
+getsebool -a | grep httpd
+seinfo
+su
+seinfo
+seinfo -cfile -x
+seinfo --class | grep file
+seinfo --class file -x
+seinfo --common file -x
+seinfo --commonfile -x
+seinfo --c -x
+seinfo --help
+seinfo --cdir
+seinfo --cdir -x
+seinfo --class | grep dir
+seinfo --cdir --stats
+seinfo --cdir -v
+seinfo --cdir -V
+seinfo --cdir -x
+seinfo --cdir --expand
+seinfo --cdir --l
+seinfo --cdir -l
+seinfo --cdir --stats
+seinfo --cblk_file --stats
+seinfo --cblk_file --v
+seinfo --cblk_file -v
+seinfo --cblk_file -h
+seinfo --cblk_file -l
+seinfo --cblk_file -x
+seinfo --common file -x
+seinfo --common dir -x
+seinfo --common dir
+grep 'httpd_.*_t' /etc/selinux/targeted/contexts/files/file_contexts
+semanage fcontext -l
+su
+sesearch --allow --source passwd_t --target shadow_t --class file
+ls
+sesearch --allow --source passwd_t --target shadow_t --class file
+sesearch -A -s passwd_t -t passwd_exec_t -c file
+sesearch --allow --source passwd_t --target shadow_t --class file
+sesearch -A -s passwd_t -t passwd_exec_t -c file
+sesearch -A -s unconfined_t -t passwd_exec_t -c file
+sesearch -A -s unconfined_t -t passwd_t -c process
+sesearch --type_trans -s unconfined_t -t passwd_exec_t
+sesearch --help
+sesearch --role_trans -s unconfined_t -t passwd_exec_t
+ausearch -m avc -ts recent
+sudo ausearch -m avc -ts recent
+seinfo | grep -E '(dontaudit|allow)'
+man audit2allow 
+history > lab12_steshoff_history.txt
