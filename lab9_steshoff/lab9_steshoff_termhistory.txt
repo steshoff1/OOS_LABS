@@ -1,0 +1,33 @@
+ldd /bin/login | grep pam
+ls -l /lib64/libpam*
+ls -l /lib64/security/
+vi /etc/pam.d/system-auth
+history
+vi /etc/pam.d/su
+su -c "hostname mephi"
+vi /etc/pam.d/su
+su
+vi /etc/pam.d/su
+useradd -G wheel -p password -s /bin/bash user1
+sudo useradd -G wheel -p password -s /bin/bash user1
+su user1
+sudo passwd user1
+su user1
+vi /etc/pam.d/su
+nano /etc/pam.d/login
+cp /etc/pam.d/login ./logcopy
+su root
+su user1
+cp ./logcopy /etc/pam.d/login 
+sudo cp ./logcopy /etc/pam.d/login 
+man pam_pwquality
+nano /etc/security/pwquality.conf
+vi /etc/pam.d/system-auth
+sudo passwd xukum 
+vi /etc/pam.d/system-auth
+vi /etc/security/pwquality.conf
+man pam_limits
+vi /etc/security/limits.conf
+su user1
+vi /etc/security/limits.conf
+history > ./lab9_steshoff_termhistory
