@@ -1,0 +1,97 @@
+ldd /bin/ls | grep selinux
+history
+ls -l /etc/selinux/
+ls -l /etc/selinux/targeted/
+id -Z
+ls -Z /etc/passwd /etc/group /etc/shadow
+ls -Z /etc/login.defs /etc/sudoers
+ls -Z /usr/bin/passwd
+ls -Z /usr/sbin/useradd
+getfattr -n security.selinux /etc/passwd
+ps Zaux
+ls /proc/$$/attr
+ps Z $(pgrep passwd)
+netstat -tnlpZ
+sestatus
+get
+getenforce
+vi /etc/selinux/config
+reboot
+sestatus
+getenforce
+vi /etc/selinux/config
+reboot
+sestatus
+getenforce
+vi /etc/selinux/config
+reboot
+sestatus
+setenforce 1
+echo 1 > /sys/fs/selinux/enforce
+uname -a
+cat /usr/src/kernels/4.18.0-425.3.1.el8.x86_64/.config | grep SeLINUX
+getsebool -a | grep httpd
+seinfo
+seinfo -cfile -x
+seinfo --class | grep file
+seinfo --class file -x
+seinfo --common file -x
+seinfo --class dir -x
+seinfo --class blk_file -x
+seinfo --class chr_file -x
+seinfo --class lnk_file -x
+seinfo --class fifo_file -x
+seinfo --class sock_file -x
+seinfo --class filesystem -x
+seinfo --common dir -x
+seinfo --common blk_file -x
+seinfo --common chr_file -x
+seinfo --common file -x
+seinfo --common lnk_file -x
+seinfo --common fifo_file -x
+seinfo --common sock_file -x
+seinfo --common filesystem -x
+seinfo | grep 'Policy Version'
+seinfo -c file -x
+seinfo -c dir -x
+seinfo --common file -x
+semanage
+grep 'httpd_.*_t' /etc/selinux/targeted/contexts/files/file_contexts
+semanage fcontext -l
+sudo semanage fcontext -l
+sudo semanage fcontext -l | grep /home/stephan
+sudo semanage fcontext -l | grep /home
+sudo semanage fcontext -l | grep lab
+touch /home/file
+sudo touch /home/file
+sudo semanage fcontext -l | grep file
+sudo semanage fcontext -l
+sudo semanage fcontext -l | less
+grep 'home' /etc/selinux/targeted/contexts/files/file_contexts
+grep 'home/file' /etc/selinux/targeted/contexts/files/file_contexts
+grep 'lab' /etc/selinux/targeted/contexts/files/file_contexts
+sudo semanage fcontext -l
+ls -lZ lab12
+cp /home/file /
+sudo cp /home/file /
+ls -lZ /
+tldr
+tldr chvon
+chcon --reference=/file /home/file
+sudo chcon --reference=/file /home/file
+ls -lZ /home/file
+man semanage fcontext
+tldr semanage fcontext
+sesearch -T -s httpd_t -t var_log_t
+sesearch -T -s httpd_t -t tmp_t
+sesearch --allow --source passwd_t --target shadow_t --class file
+sesearch -A -s passwd_t -t passwd_exec_t -c file
+sesearch -A -s unconfined_t -t passwd_exec_t -c file
+sesearch -A -s unconfined_t -t passwd_t -c process
+sesearch --type_trans -s unconfined_t -t passwd_exec_t
+ausearch -m avc -ts recent
+sudo ausearch -m avc -ts recent
+seinfo | grep -E '(dontaudit|allow)'
+man audit2allow
+history
+history > lab12_steshoff_history

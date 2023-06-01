@@ -1,0 +1,12 @@
+    1  auditctl -D
+    2  auditctl -w /home/steshoff_bos/file1 -p war -k nikita_file1
+    3  auditctl -l
+    4  aureport --file -ts today -i --summary
+    5  aureport --file -ts recent
+    6  ausearch -a 13053
+    7  aureport
+    8  aureport --auth -ts recent
+    9  aureport --user -ts recent -i
+   10  ausearch --uid 1001 -ts recent
+   11  ausearch --uid 1000 -ts recent
+   12  history > lab11_steshoff_roothistory.txt
