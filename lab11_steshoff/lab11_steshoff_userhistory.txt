@@ -1,7 +1,0 @@
- 432  id
- 433  pwd
- 434  touch file1
- 435  echo 'Hello, world!' > file1 
- 436  cat file1
- 437  chmod 600 file1 
- 438  history > lab11_steshoff_userhisotry.txt
